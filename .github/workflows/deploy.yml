@@ -1,0 +1,13 @@
+name: Deployment (not configured)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  infrastructure-required:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment disabled
+        run: |
+          echo 'Deployment is disabled. Configure hosting, environment protection, and secrets before replacing this workflow.' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
