@@ -12,9 +12,10 @@ describe("photography homepage", () => {
     }
   });
 
-  it("clearly indicates that portfolio and bookings are not yet available", () => {
+  it("renders the portfolio while keeping booking availability accurate", () => {
     const html = renderToStaticMarkup(<Home />);
-    expect(html).toContain("Our portfolio and booking experience are on their way.");
+    expect(html).toContain('id="portfolio"');
+    expect(html).toContain("Online booking is in development");
     expect(html).not.toContain("<form");
   });
 });

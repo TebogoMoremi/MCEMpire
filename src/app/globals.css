@@ -2,3 +2,49 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #677e36;outline-offset:6px}.skip-link{position:absolute;left:20px;top:-100px;z-index:5;padding:16px;background:white}.skip-link:focus{top:12px}.site-header{padding:30px 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #25271f30}.wordmark{font-size:30px;font-weight:800;letter-spacing:-2px;display:flex;align-items:center;gap:18px}.wordmark span{max-width:110px;font-size:10px;line-height:1.5;letter-spacing:2px}nav{font-size:13px}nav span{margin-left:18px}.hero{position:relative;padding:70px 6% 60px;overflow:hidden;min-height:650px}.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:2px;font-weight:700;line-height:1.8}h1{position:relative;z-index:1;font-size:clamp(58px,7.5vw,114px);font-weight:400;line-height:1.02;letter-spacing:-5px;margin:60px 0}h1 em{font-family:Georgia,serif;font-weight:400}.hero-bottom{position:relative;z-index:1;display:flex;align-items:center;gap:60px}.hero-bottom p,.services p,.launch-note>p:last-child{font-size:15px;line-height:1.8;color:var(--muted)}.button{background:var(--ink);color:var(--paper);padding:20px 24px;font-size:12px;display:inline-flex;gap:32px}.frame-art{position:absolute;right:6%;top:75px;width:30%;height:430px;border:1px solid #8e956a;background:linear-gradient(145deg,#dce2c8,#aab58e 45%,#5d6a4e);border-radius:180px 180px 0 0;transform:rotate(8deg);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:16px 16px 0 #e4e5d6}.frame-art span{font-family:Georgia,serif;font-size:5vw;color:#f4f1e980;letter-spacing:5px}.frame-art small{font-size:8px;letter-spacing:3px;color:#f4f1e9;margin-top:20px}.services{padding:70px 6%;border-top:1px solid #25271f30}.section-heading{display:flex;justify-content:space-between;align-items:start}h2{font-family:Georgia,serif;font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;margin:0 0 48px;letter-spacing:-1px}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}.service-grid article{border-top:1px solid #25271f50;padding-top:24px}.service-number{font-size:11px;color:var(--muted)}h3{font-size:25px;font-weight:400;margin:30px 0 14px}.launch-note{background:var(--accent);padding:60px 6%}.launch-note h2{margin:20px 0}.launch-note>p:last-child{max-width:520px}footer{padding:30px 6%;display:flex;justify-content:space-between;gap:20px;font-size:11px}footer p{margin:0}footer span{color:var(--muted)}
 @media(max-width:800px){.hero{padding-top:40px}.frame-art{position:relative;top:auto;right:auto;width:75%;height:260px;margin:55px auto 15px}.frame-art span{font-size:65px}h1{font-size:clamp(52px,10vw,80px);letter-spacing:-3px;margin:40px 0}.hero-bottom{align-items:start;flex-direction:column;gap:15px}.section-heading{display:block}.service-grid{grid-template-columns:1fr;gap:24px}.services{padding-top:45px}.wordmark{font-size:25px;gap:12px}.wordmark span{font-size:8px}footer{flex-direction:column}.site-header{padding-top:24px;padding-bottom:24px}h3{margin-top:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Photography portfolio */
+nav { display: flex; align-items: center; gap: 28px; }
+.hero { min-height: 710px; }
+.hero h1 { font-size: clamp(58px, 6.5vw, 96px); max-width: 65%; }
+.hero .eyebrow { max-width: 60%; }
+.hero-bottom { max-width: 60%; flex-wrap: wrap; gap: 24px; }
+.hero-photograph { position: absolute; right: 6%; top: 55px; width: 31%; max-width: 430px; margin: 0; }
+.hero-photograph img { display: block; width: 100%; height: auto; }
+.hero-photograph figcaption { font-size: 9px; letter-spacing: 2px; margin-top: 15px; color: var(--muted); }
+.portfolio { padding: 70px 6%; background: #eae8df; scroll-margin-top: 24px; }
+.portfolio .section-heading { gap: 50px; }
+.portfolio h2 em { font-weight: 400; }
+.portfolio-intro { max-width: 350px; color: var(--muted); font-size: 15px; line-height: 1.8; margin-top: 28px; }
+.portfolio-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-bottom: 1px solid #25271f30; padding-bottom: 20px; }
+.portfolio-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.portfolio-filters button { font: inherit; font-size: 12px; color: var(--ink); background: transparent; padding: 12px 18px; border: 1px solid #25271f50; border-radius: 24px; cursor: pointer; min-height: 44px; }
+.portfolio-filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.portfolio-filters button:hover { border-color: var(--ink); }
+.portfolio-filters button:focus-visible { outline: 3px solid #677e36; outline-offset: 4px; }
+.portfolio-count { font-size: 11px; white-space: nowrap; color: var(--muted); }
+.gallery-hint { font-size: 11px; color: var(--muted); margin: 20px 0 30px; line-height: 1.7; }
+.portfolio-grid { columns: 3; column-gap: 28px; }
+.portfolio-photo { margin: 0 0 32px; break-inside: avoid; }
+.portfolio-photo a { display: block; }
+.portfolio-photo img { display: block; width: 100%; height: auto; background: #d3d2c9; }
+.portfolio-photo figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 16px; }
+.portfolio-photo h3 { font-family: Georgia, serif; font-size: 19px; margin: 0; line-height: 1.4; }
+.portfolio-photo figcaption span { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+@media (min-width: 1600px) { .hero { min-height: 760px; } }
+@media (max-width: 1000px) { .portfolio-grid { columns: 2; } }
+@media (max-width: 800px) {
+  .hero h1, .hero .eyebrow, .hero-bottom { max-width: none; }
+  .hero h1 { font-size: clamp(48px, 10vw, 80px); }
+  .hero-photograph { position: static; width: 85%; max-width: 430px; margin: 45px auto 0; }
+  .portfolio-intro { margin-top: 0; margin-bottom: 30px; }
+  .portfolio { padding-top: 45px; }
+}
+@media (max-width: 600px) {
+  .portfolio-grid { columns: 1; }
+  .portfolio-toolbar { align-items: start; flex-direction: column; gap: 8px; }
+  .portfolio-count { margin: 0; }
+  nav { gap: 15px; }
+  nav span { display: none; }
+  .wordmark span { max-width: 85px; letter-spacing: 1px; }
+}

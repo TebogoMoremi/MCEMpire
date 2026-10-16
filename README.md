@@ -4,7 +4,9 @@ Next.js App Router, React, TypeScript, Prisma and PostgreSQL foundation for the 
 
 ## Current milestone
 
-The starter homepage, service descriptions, database schema, container configuration and CI pipeline are implemented. The decorative homepage graphic is not portfolio photography. Portfolio browsing, booking, availability, admin, quotations, AI assistance and WhatsApp integration are future features, not functioning services in this scaffold.
+The homepage, filterable photography portfolio, service descriptions, database schema, container configuration and CI pipeline are implemented. Eight unique user-supplied photographs appear in their original proportions with their watermarks intact. Category buttons filter the collection; selecting a photo opens the original in a new tab. Booking, availability, admin, quotations, AI assistance and WhatsApp integration remain future features.
+
+Portfolio images live in `public/images/portfolio`; captions, dimensions, categories and alt text live in `src/services/portfolio.ts`. The gallery currently reads this static catalogue, not PostgreSQL. The supplied duplicate print photo is included only once. Images are served through Next.js image optimization; source JPEGs remain unchanged.
 
 ## Local development
 
@@ -66,4 +68,4 @@ CI installs from the lockfile, generates Prisma, validates and applies migration
 
 Dependency audit note (2026-10-16): the development-only `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces` chain has five high-severity audit entries originating from an upstream `braces` stack-exhaustion issue. npm's suggested downgrade to Next.js 14 lint configuration is incompatible with this Next.js 16 foundation. Do not use `npm audit fix --force`; recheck upstream releases before expanding the tooling. Prisma and Vitest were upgraded to remove their reported vulnerabilities.
 
-Implement portfolio browsing with real, approved photography and database access. Agree booking rules and admin authentication before introducing public write endpoints.
+Agree booking rules, contact details and admin authentication before introducing enquiries or public write endpoints. Database-backed portfolio administration can replace the static catalogue when that feature is implemented.
