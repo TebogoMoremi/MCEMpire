@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/playfair-display";
+import "./cinematic.css";
 
 export const metadata: Metadata = { title: site.name, description: site.description };
 
