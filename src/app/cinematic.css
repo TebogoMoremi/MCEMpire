@@ -41,3 +41,40 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Cinematic hero: the uncropped subject stays beside the editorial copy. */
+.cinema-hero { position: relative; min-height: min(900px, 94svh); display: flex; align-items: center; isolation: isolate; overflow: hidden; padding: 100px 6% 140px; touch-action: pan-y pinch-zoom; background: #050505; }
+.hero-picture { position: absolute; inset: 0 0 0 35%; z-index: -2; animation: photo-enter 1.1s ease both; }
+.hero-picture img { object-fit: contain; animation: cinematic-drift 7s ease-out both; }
+.cinema-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#050505 0%,#050505ed 30%,#05050550 53%,transparent 72%),linear-gradient(0deg,#050505 0%,transparent 20%,transparent 85%,#05050580); }
+.cinema-content { width: 57%; max-width: 800px; }
+.cinema-content h1 { font-size: clamp(44px,5.2vw,82px); letter-spacing: -.045em; line-height: 1.1; margin-block: 26px; animation: copy-enter .7s ease both; }
+.cinema-content h1 em { color: #fff; }
+.hero-description { font-size: 14px; line-height: 1.8; color: #bfbfc6; margin: 28px 0 32px; }
+.hero-navigation { position: absolute; bottom: 38px; left: 6%; display: flex; align-items: center; gap: 30px; }
+.slide-number { color: var(--soft-gold); font-size: 20px; font-family: var(--heading); }
+.slide-number span { color: var(--muted); font-size: 12px; }
+.slide-dots { display: flex; gap: 4px; }
+.slide-dots button { border: 0; width: 32px; height: 44px; padding: 0; background: transparent; position: relative; cursor: pointer; }
+.slide-dots button::after { content: ""; display: block; height: 2px; background: #ffffff45; transition: background .25s; }
+.slide-dots button[aria-pressed="true"]::after { background: var(--accent); }
+.carousel-controls { display: flex; gap: 8px; }
+.carousel-controls button { min-width: 44px; min-height: 44px; border: 1px solid #ffffff40; background: #05050570; color: #fff; cursor: pointer; border-radius: 50%; }
+.carousel-controls button:hover { border-color: var(--accent); color: var(--soft-gold); }
+.carousel-controls .rotation-toggle { border: 0; border-radius: 0; font-size: 10px; width: 48px; }
+.scroll-cue { position: absolute; right: 6%; bottom: 50px; font-size: 10px; text-transform: uppercase; letter-spacing: .15em; color: #d1d1d6; }
+.scroll-cue span { margin-left: 18px; }
+@keyframes photo-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes copy-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cinematic-drift { from { transform: scale(1); } to { transform: scale(1.025); } }
+@media (max-width: 800px) {
+  .cinema-hero { display: block; padding: 0 6% 110px; min-height: auto; }
+  .hero-picture { position: relative; inset: auto; height: clamp(300px,66vw,480px); margin-inline: -6.82%; z-index: 0; }
+  .hero-picture img { object-fit: contain; }
+  .cinema-hero::after { display: none; }
+  .cinema-content { width: 100%; margin-top: 26px; max-width: 620px; }
+  .cinema-content h1 { font-size: clamp(37px,7vw,60px); }
+  .hero-navigation { gap: 16px; bottom: 24px; }
+  .scroll-cue { display: none; }
+}
+@media (max-width: 375px) { .hero-navigation { gap: 9px; } .slide-dots button { width: 24px; } .carousel-controls { gap: 4px; } }
