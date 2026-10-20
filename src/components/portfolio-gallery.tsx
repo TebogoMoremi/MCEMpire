@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { PhotoLightbox } from "./photo-lightbox";
 import { filterPortfolio, photoSource, portfolioCategories, type PortfolioCategory } from "@/services/portfolio";
 
 export function PortfolioGallery() {
   const [category, setCategory] = useState<PortfolioCategory>("All");
+  const [selected, setSelected] = useState<number | null>(null);
   const photos = filterPortfolio(category);
 
   return (
     <section id="portfolio" className="portfolio" aria-labelledby="portfolio-title">
       <div className="section-heading">
-        <div><p className="eyebrow">01 / Selected work</p><h2 id="portfolio-title">Real people.<br /><em>Lasting impressions.</em></h2></div>
+        <div><p className="eyebrow">01 / Selected work</p><h2 id="portfolio-title">Moments worth<br /><em>remembering.</em></h2></div>
         <p className="portfolio-intro">From the first birthday to a moment just for you. A collection of portraits, family stories and celebrations, seen through our lens.</p>
       </div>
       <div className="portfolio-toolbar">
@@ -20,17 +22,18 @@ export function PortfolioGallery() {
         </div>
         <p className="portfolio-count" role="status">{photos.length} {photos.length === 1 ? "photograph" : "photographs"}</p>
       </div>
-      <p className="gallery-hint">Select a photograph to view the full image in a new tab.</p>
+      <p className="gallery-hint">Select a photograph to explore the collection. Use the arrow keys or swipe to browse.</p>
       <div id="portfolio-grid" className="portfolio-grid">
-        {photos.map((photo) => (
+        {photos.map((photo, index) => (
           <figure className="portfolio-photo" key={photo.slug}>
-            <a href={photoSource(photo)} target="_blank" rel="noopener noreferrer" aria-label={`View ${photo.title} — full photograph (opens in a new tab)`}>
+            <button className="photo-open" type="button" onClick={() => setSelected(index)} aria-label={`View ${photo.title} — full photograph`}>
               <Image src={photoSource(photo)} alt={photo.alt} width={photo.width} height={photo.height} sizes="(max-width: 600px) 88vw, (max-width: 1000px) 42vw, 28vw" />
-            </a>
+            </button>
             <figcaption><h3>{photo.title}</h3><span>{photo.category}</span></figcaption>
           </figure>
         ))}
       </div>
+      {selected !== null && <PhotoLightbox photos={photos} initial={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 }

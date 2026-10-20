@@ -18,9 +18,9 @@ describe("cinematic hero", () => {
     fireEvent.click(screen.getByRole("button", { name: "Next slide" }));
     expect(screen.getByRole("link", { name: /Explore matric packages/ }).getAttribute("href")).toBe("#matric");
     fireEvent.keyDown(screen.getByRole("region", { name: "Photography highlights" }), { key: "ArrowLeft" });
-    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Every love story");
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Every moment");
     fireEvent.click(screen.getByRole("button", { name: /Show slide 3/ }));
-    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("More than a photo");
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Beauty in");
   });
   it("advances every six seconds and pauses on hover, hidden tabs and explicit pause", () => {
     vi.useFakeTimers();
@@ -43,14 +43,14 @@ describe("cinematic hero", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Your moment");
     fireEvent.click(screen.getByRole("button", { name: "Resume slideshow" }));
     act(() => vi.advanceTimersByTime(6000));
-    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("More than a photo");
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Beauty in");
   });
   it("disables autoplay for reduced motion and supports touch swipes", () => {
     reduced = true;
     vi.useFakeTimers();
     render(<HeroSlider />);
     act(() => vi.advanceTimersByTime(18000));
-    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Every love story");
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain("Every moment");
     expect(screen.queryByRole("button", { name: "Pause slideshow" })).toBeNull();
     const region = screen.getByRole("region", { name: "Photography highlights" });
     fireEvent.touchStart(region, { touches: [{ clientX: 200, clientY: 30 }] });

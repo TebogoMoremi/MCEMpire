@@ -6,8 +6,8 @@ describe("photography homepage", () => {
   it("renders each service and makes the navigation target available", () => {
     const html = renderToStaticMarkup(<Home />);
     expect(html).toContain('id="services"');
-    expect(html).toContain('href="#packages"');
-    for (const title of ["Portraits", "Celebrations", "Canvas prints"]) {
+    expect(html).toContain('href="/#packages"');
+    for (const title of ["Portrait Photography", "Event Photography", "Canvas Printing", "Drone Coverage", "Videography", "Wedding Photography", "Matric Dance Photography", "Funeral Photography"]) {
       expect(html).toContain(`<h3>${title}</h3>`);
     }
   });

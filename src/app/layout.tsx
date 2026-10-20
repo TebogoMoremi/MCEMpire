@@ -4,6 +4,7 @@ import "./globals.css";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/playfair-display";
 import "./cinematic.css";
+import "./studio.css";
 
 export const metadata: Metadata = { title: site.name, description: site.description };
 
